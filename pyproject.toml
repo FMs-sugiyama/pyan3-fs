@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pyan3-fs"
+version = "0.1.0"
+description = ""
+authors = ["Sugiyama Tsuyoshi <sugiyama@fullmarks.co.jp>"]
+readme = "README.md"
+packages = [{include = "pyan3_fs"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
