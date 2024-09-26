@@ -1,6 +1,7 @@
 import astroid
 import os
 import sys
+import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from astroid.exceptions import AstroidError, InferenceError
 from pathlib import Path
@@ -34,7 +35,11 @@ class FileParser:
         self.output_file = output_file
 
         # 出力ファイルを開く
-        self.output_fp = open(self.output_file, "w", encoding="utf-8")
+        try:
+            self.output_fp = open(self.output_file, "w", encoding="utf-8")
+        except IOError as e:
+            print(f"Error opening output file '{self.output_file}': {e}")
+            sys.exit(1)
         self.write = self.output_fp.write  # 書き込み用の関数を定義
 
         self.write(f"Handler module path: {self.handler_module_path}\n")
@@ -81,7 +86,7 @@ class FileParser:
         # → module_name = clubjt_impl.api.user.service.address
         parts = relative_path.with_suffix("").parts
         module_name = ".".join(parts)
-        # self.write(f"Derived module name for '{file_path}': {module_name}\n")
+        self.write(f"Derived module name for '{file_path}': {module_name}\n")
         return module_name
 
     def find_references_in_file(self, file_path: str, def_qnames: set):
@@ -105,10 +110,18 @@ class FileParser:
         except (AstroidError, FileNotFoundError) as e:
             self.write(f"Error parsing file '{file_path}': {e}\n")
             return references
+        except StopIteration as e:
+            self.write(f"StopIteration in file '{file_path}': {e}\n")
+            return references
 
         # Nameノードと Attributeノードを取得
-        name_nodes = module.nodes_of_class(astroid.Name)
-        attribute_nodes = module.nodes_of_class(astroid.Attribute)
+        try:
+            name_nodes = module.nodes_of_class(astroid.Name)
+            attribute_nodes = module.nodes_of_class(astroid.Attribute)
+        except Exception as e:
+            self.write(f"Error retrieving nodes in file '{file_path}': {e}\n")
+            self.write(traceback.format_exc())
+            return references
 
         # Nameノードの参照をチェック
         for node in name_nodes:
@@ -117,14 +130,33 @@ class FileParser:
             except InferenceError:
                 # InferenceErrorは無視
                 continue
+            except StopIteration:
+                self.write(
+                    f"StopIteration during inference for Name node '{node.name}' in '{file_path}'.\n"
+                )
+                continue
             except Exception as e:
                 self.write(
                     f"Unexpected error during inference for node '{node.name}' in '{file_path}': {e}\n"
                 )
+                self.write(traceback.format_exc())
                 continue
 
             for inferred_def in inferred_defs:
-                inferred_qname = inferred_def.qname()
+                try:
+                    inferred_qname = inferred_def.qname()
+                except StopIteration:
+                    self.write(
+                        f"StopIteration when getting qname for inferred_def in '{file_path}'.\n"
+                    )
+                    continue
+                except Exception as e:
+                    self.write(
+                        f"Unexpected error when getting qname in '{file_path}': {e}\n"
+                    )
+                    self.write(traceback.format_exc())
+                    continue
+
                 if inferred_qname:
                     # clubjt_impl.* のみ処理
                     if not inferred_qname.startswith("clubjt_impl."):
@@ -149,14 +181,33 @@ class FileParser:
             except InferenceError:
                 # InferenceErrorは無視
                 continue
+            except StopIteration:
+                self.write(
+                    f"StopIteration during inference for Attribute node '{node.attrname}' in '{file_path}'.\n"
+                )
+                continue
             except Exception as e:
                 self.write(
                     f"Unexpected error during inference for node '{node.attrname}' in '{file_path}': {e}\n"
                 )
+                self.write(traceback.format_exc())
                 continue
 
             for inferred_def in inferred_defs:
-                inferred_qname = inferred_def.qname()
+                try:
+                    inferred_qname = inferred_def.qname()
+                except StopIteration:
+                    self.write(
+                        f"StopIteration when getting qname for inferred_def in '{file_path}'.\n"
+                    )
+                    continue
+                except Exception as e:
+                    self.write(
+                        f"Unexpected error when getting qname in '{file_path}': {e}\n"
+                    )
+                    self.write(traceback.format_exc())
+                    continue
+
                 if inferred_qname:
                     # clubjt_impl.* のみ処理
                     if not inferred_qname.startswith("clubjt_impl."):
@@ -199,6 +250,19 @@ class FileParser:
             self.write(f"Error parsing module '{self.handler_module_path}': {e}\n")
             self.output_fp.close()
             sys.exit(1)
+        except StopIteration as e:
+            self.write(
+                f"StopIteration when building module '{self.handler_module_path}': {e}\n"
+            )
+            self.output_fp.close()
+            sys.exit(1)
+        except Exception as e:
+            self.write(
+                f"Unexpected error when building module '{self.handler_module_path}': {e}\n"
+            )
+            self.write(traceback.format_exc())
+            self.output_fp.close()
+            sys.exit(1)
 
         # モジュール内の全てのクラス、関数、メソッドを取得
         try:
@@ -219,6 +283,11 @@ class FileParser:
             self.write(f"Error accessing classes or functions: {e}\n")
             self.write(f"module_a type: {type(module_a)}\n")
             self.write(f"module_a attributes: {dir(module_a)}\n")
+            self.output_fp.close()
+            sys.exit(1)
+        except Exception as e:
+            self.write(f"Unexpected error when accessing definitions: {e}\n")
+            self.write(traceback.format_exc())
             self.output_fp.close()
             sys.exit(1)
 
@@ -279,12 +348,17 @@ class FileParser:
                 for file_path in py_files
             }
             for future in as_completed(future_to_file):
+                file_path = future_to_file[future]
                 try:
                     file_refs = future.result()
                     references.extend(file_refs)
+                except StopIteration as e:
+                    self.write(
+                        f"StopIteration raised without any error information in file '{file_path}': {e}\n"
+                    )
                 except Exception as e:
-                    file_path = future_to_file[future]
                     self.write(f"Error processing file '{file_path}': {e}\n")
+                    self.write(traceback.format_exc())
 
         # 結果をファイルに出力
         if references:
@@ -318,7 +392,7 @@ if __name__ == "__main__":
         project_path=PROJECT_PATH,
         handler_module=HANDLER_MODULE,
         scan_module=SCAN_MODULE,  # スキャン対象モジュールの指定
-        max_workers=8,
+        max_workers=2,
         output_file=OUTPUT_FILE,  # 出力ファイルの指定
     )
     parser.run()
