@@ -1,0 +1,42 @@
+- astroidを使ってpythonコードの静的解析を行う
+- PROJECT_PATHで指定されたpythonプロジェクトの、TARGET_MODULE配下の全てのpyファイルを走査する
+- 走査したファイルの中で、以下の例外をraiseする箇所を見つける
+  - module:clubjt_impl.error.clubjt_error
+  - class:
+    - ClubjtError
+    - ClubjtModuleError
+    - ClubjtAuth0Error
+    - ClubjtAuth0AuthenticationAPIError
+    - ClubjtAuth0ManagementAPIError
+- 抽出された処理の以下の内容を出力する
+  - 発生元情報
+    - file_path
+    - class_name(クラスメソッドであれば。そうでなければnull)
+    - function_name
+  - 発生エラー情報
+    - error_class_name
+    - コンストラクト時の引数（引数名が指定されていない場合は、1/2/3番目の引数でアサインすること）
+      - status_code
+      - reason
+      - message(指定がない場合、COMMON_ERROR_MESSAGE = "ただいま混み合っております。 誠に申し訳ございませんが、しばらくしてからもう一度やり直してください。")
+- 生成するコードは__main__から実行する
+- 生成するコードは以下のクラス名で実装される
+  - ClubjtErrorAnalyzer
+- 生成するコードは以下のメソッドから実行する
+  - execute
+- 実行時のパラメータ（定数）は以下をデフォルト値とする
+  - PROJECT_PATH = "/Users/sugiyama/clubjt-server/clubjt-impl"
+  - TARGET_MODULE = "clubjt_impl"
+- 結果はclubjt_error_result.csvにCSV形式で出力する
+- 実装上のルールは以下を守ってください
+  - 省略のない、完全で実行可能なPythonコードファイルを生成してください。
+  - Python 3.10以上と互換性のあるコードを書いてください。
+  - 関数とメソッドに明確な型アノテーションを使用してください：
+    - アノテーションには組み込み型（例：list, dict, set）を使用してください。
+    - typingモジュールからのインポートは避け、組み込み型のみを使用してください。
+    - すべての関数に戻り値の型アノテーションを提供してください。
+  - コードがPEP 8スタイルガイドラインに準拠していることを確認してください。
+  - プロンプトで指定されたすべての制約を厳密に遵守してください。
+  - 綿密なエラー処理とログ記録を実装してください。
+  - 回答する際は、プログラミングの知識を使用して、非現実的または機能しないソリューションを避けてください。
+  - メソッドが静的メソッドになり得る場合は、静的メソッドにする代わりに@classmethodデコレータを使用してください。
