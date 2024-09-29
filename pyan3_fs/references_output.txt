@@ -94,10 +94,128 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/e
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/__init__.py': clubjt_impl.external_service.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/talks_client.py': clubjt_impl.external_service.talks_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/survey_monkey_client.py': clubjt_impl.external_service.survey_monkey_client
+Error processing file '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/giftee_client.py': (<AssignName.Enum l.21 at 0x10acd0110>, None, None, None)
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/slack_client.py': clubjt_impl.external_service.slack_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/pager_duty_client.py': clubjt_impl.external_service.pager_duty_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/gyron_api_client.py': clubjt_impl.external_service.gyron_api_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/cuenote_client.py': clubjt_impl.external_service.cuenote_client
+Traceback (most recent call last):
+  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 244, in run
+    file_refs = future.result()
+                ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 99, in find_references_in_file
+    inferred_defs = list(node.infer())
+                    ^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/bases.py", line 177, in _infer_stmts
+    for inf in stmt.infer(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_classes.py", line 2867, in _infer
+    module = self.do_import_module()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/_base_nodes.py", line 168, in do_import_module
+    return mymodule.import_module(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 462, in import_module
+    return AstroidManager().ast_from_module_name(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/manager.py", line 276, in ast_from_module_name
+    return self.ast_from_file(found_spec.location, modname, fallback=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/manager.py", line 166, in ast_from_file
+    return AstroidBuilder(self).file_build(filepath, modname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/builder.py", line 145, in file_build
+    return self._post_build(module, builder, encoding)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/builder.py", line 173, in _post_build
+    module = self._manager.visit_transforms(module)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/manager.py", line 127, in visit_transforms
+    return self._transform.visit(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 158, in visit
+    return self._visit(node)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 82, in _visit
+    visited = self._visit_generic(value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 108, in _visit_generic
+    return [self._visit_generic(child) for child in node]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 108, in <listcomp>
+    return [self._visit_generic(child) for child in node]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 115, in _visit_generic
+    return self._visit(node)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 85, in _visit
+    return self._transform(node)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/transforms.py", line 67, in _transform
+    ret = transform_func(node)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/brain/brain_namedtuple_enum.py", line 464, in infer_enum_class
+    new_targets.append(fake.instantiate_class())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2367, in instantiate_class
+    if any(cls.name in EXCEPTION_BASE_CLASSES for cls in self.mro()):
+                                                         ^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2948, in mro
+    return self._compute_mro(context=context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2917, in _compute_mro
+    inferred_bases = list(self._inferred_bases(context=context))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2897, in _inferred_bases
+    baseobj = next(
+              ^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2897, in <genexpr>
+    baseobj = next(
+                  ^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/bases.py", line 177, in _infer_stmts
+    for inf in stmt.infer(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/bases.py", line 177, in _infer_stmts
+    for inf in stmt.infer(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 160, in infer
+    yield from context.inferred[key]
+               ~~~~~~~~~~~~~~~~^^^^^
+KeyError: (<AssignName.Enum l.21 at 0x10acd0110>, None, None, None)
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/line_client.py': clubjt_impl.external_service.line_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/zipcloud_api_client.py': clubjt_impl.external_service.zipcloud_api_client
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/external_service/gmo_payment_client.py': clubjt_impl.external_service.gmo_payment_client
@@ -161,21 +279,21 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/u
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/clubjtgram_util.py': clubjt_impl.util.clubjtgram_util
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/user_post_spot_util.py': clubjt_impl.util.user_post_spot_util
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/kinesis_util.py': clubjt_impl.util.kinesis_util
+Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 796, column 28, class: PlanUtil, method/function: apply_campaign
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/draft_review_util.py': clubjt_impl.util.draft_review_util
+Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 885, column 28, class: PlanUtil, method/function: apply_campaign
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/map_plan_util.py': clubjt_impl.util.map_plan_util
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/akamai_cache_tag_util.py': clubjt_impl.util.akamai_cache_tag_util
-Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 796, column 28, class: PlanUtil, method/function: apply_campaign
-Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 885, column 28, class: PlanUtil, method/function: apply_campaign
+Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 1220, column 28, class: PlanUtil, method/function: apply_campaign_multiple_times
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/spot_report_util.py': clubjt_impl.util.spot_report_util
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/information_task/__init__.py': clubjt_impl.util.information_task.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/information_task/information_task_PX_0009.py': clubjt_impl.util.information_task.information_task_PX_0009
-Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 1220, column 28, class: PlanUtil, method/function: apply_campaign_multiple_times
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/information_task/abstract_information_task.py': clubjt_impl.util.information_task.abstract_information_task
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/information_task/information_task_80198.py': clubjt_impl.util.information_task.information_task_80198
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/information_task/information_task_PX_0001.py': clubjt_impl.util.information_task.information_task_PX_0001
+Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 1455, column 36, class: PlanUtil, method/function: bulk_apply_coupon_plan
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/security/__init__.py': clubjt_impl.util.security.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/security/digest_authentication.py': clubjt_impl.util.security.digest_authentication
-Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util.py at line 1455, column 36, class: PlanUtil, method/function: bulk_apply_coupon_plan
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/security/utils.py': clubjt_impl.util.security.utils
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/akamai_tag_strategy/strategy_base.py': clubjt_impl.util.akamai_tag_strategy.strategy_base
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/akamai_tag_strategy/__init__.py': clubjt_impl.util.akamai_tag_strategy.__init__
@@ -341,7 +459,6 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/m
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/promotion/service/abstract/exclusion_user.py': clubjt_impl.module.promotion.service.abstract.exclusion_user
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/promotion/service/abstract/user_device.py': clubjt_impl.module.promotion.service.abstract.user_device
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/promotion/service/abstract/raw_data.py': clubjt_impl.module.promotion.service.abstract.raw_data
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/promotion/service/abstract/subscription_campaign.py': clubjt_impl.module.promotion.service.abstract.subscription_campaign
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/promotion/service/abstract/optional_coupon_type.py': clubjt_impl.module.promotion.service.abstract.optional_coupon_type
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/shop/__init__.py': clubjt_impl.module.shop.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/shop/model.py': clubjt_impl.module.shop.model
@@ -389,8 +506,11 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/m
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/raw_data.py': clubjt_impl.module.user.service.raw_data
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/mail.py': clubjt_impl.module.user.service.abstract.mail
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/user.py': clubjt_impl.module.user.service.abstract.user
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/login_user.py': clubjt_impl.module.user.service.abstract.login_user
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/line_id_link_user.py': clubjt_impl.module.user.service.abstract.line_id_link_user
+ ô“   p
+;   pë“   πá
+   x	   ÄÅ“   ¿õ“   p
+;   @	   0õ“   ∞d7   pµÖ   @	   ∞´“       +3   ÄÆ“   p
+;   @ª“   0ô   ‡	   @µR   ô   x	   ºR   p≤R   Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/login_user.py': clubjt_impl.module.user.service.abstract.login_user
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/monitor.py': clubjt_impl.module.user.service.abstract.monitor
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/rank_change_history.py': clubjt_impl.module.user.service.abstract.rank_change_history
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/module/user/service/abstract/trial_monitor.py': clubjt_impl.module.user.service.abstract.trial_monitor
@@ -439,7 +559,7 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/o
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/dynamodb_service_base.py': clubjt_impl.observer.dynamodb.dynamodb_service_base
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/service/__init__.py': clubjt_impl.observer.dynamodb.service.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/service/ent.py': clubjt_impl.observer.dynamodb.service.ent
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/service/abstract/__init__.py': clubjt_impl.observer.dynamodb.service.abstract.__init__
+            5   Ô  ªÄBÔ  U              5   i8M8ªÄBÔ  T             5       XªÄBÔ  S  -˙—}        5      xªÄBÔ  K  Ô          5   Ô  òªÄBÔ  â  Ô          5   Ô  ∏ªÄBÔ  PªDerived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/service/abstract/__init__.py': clubjt_impl.observer.dynamodb.service.abstract.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/dynamodb/service/abstract/ent.py': clubjt_impl.observer.dynamodb.service.abstract.ent
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/service/rds.py': clubjt_impl.observer.service.rds
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/observer/service/aws_health.py': clubjt_impl.observer.service.aws_health
@@ -491,7 +611,6 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/t
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/spot_filter_table.py': clubjt_impl.table.spot_filter_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/websocket_connection_operator_table.py': clubjt_impl.table.websocket_connection_operator_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/mail_magazine_address_import_schedule_table.py': clubjt_impl.table.mail_magazine_address_import_schedule_table
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/point_winning_rate_table.py': clubjt_impl.table.point_winning_rate_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/favorite_brand_table.py': clubjt_impl.table.favorite_brand_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/spot_favorite_count_table.py': clubjt_impl.table.spot_favorite_count_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/clubjtgram_table.py': clubjt_impl.table.clubjtgram_table
@@ -523,8 +642,8 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/t
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/spot_manager_table.py': clubjt_impl.table.spot_manager_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/monitor_flyer_table.py': clubjt_impl.table.monitor_flyer_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/content_history_table.py': clubjt_impl.table.content_history_table
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/step_function_status_table.py': clubjt_impl.table.step_function_status_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/interview_code_table.py': clubjt_impl.table.interview_code_table
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/step_function_status_table.py': clubjt_impl.table.step_function_status_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/advertisement_section_table.py': clubjt_impl.table.advertisement_section_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/clubjtgram_like_table.py': clubjt_impl.table.clubjtgram_like_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/bulk_import_information_table.py': clubjt_impl.table.bulk_import_information_table
@@ -544,8 +663,14 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/t
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/tobacco_stock_table.py': clubjt_impl.table.tobacco_stock_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/survey_monkey_survey_table.py': clubjt_impl.table.survey_monkey_survey_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/misc_attribute_table.py': clubjt_impl.table.misc_attribute_table
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/user_post_count_rank_table.py': clubjt_impl.table.user_post_count_rank_table
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/release_note_table.py': clubjt_impl.table.release_note_table
+    -   q\„Sw
+           -   ≥_ˆ\w
+           -   ôô›]w
+           -   aõZw
+           -   ÿöÂww
+           -   èy°\w
+           -   PO¿åw
+           Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/user_post_count_rank_table.py': clubjt_impl.table.user_post_count_rank_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/spot_coupon_table.py': clubjt_impl.table.spot_coupon_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/utm_table.py': clubjt_impl.table.utm_table
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/table/plan_update_history_summary_table.py': clubjt_impl.table.plan_update_history_summary_table
@@ -598,7 +723,9 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/b
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/user.py': clubjt_impl.batch.service.user
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/jinja_extension.py': clubjt_impl.batch.service.jinja_extension
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/dialog_one.py': clubjt_impl.batch.service.dialog_one
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/survey_monkey.py': clubjt_impl.batch.service.survey_monkey
+Ô  1  ™ºAáHQEÇÔ         †SEÇÔ  (SEÇÔ        C          ∞9ú
+             ó             2             õ¶=}úå§– ·|   p}ì
+ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/survey_monkey.py': clubjt_impl.batch.service.survey_monkey
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/monitor.py': clubjt_impl.batch.service.monitor
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/ec.py': clubjt_impl.batch.service.ec
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/exchange_token.py': clubjt_impl.batch.service.exchange_token
@@ -643,64 +770,7 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/b
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/spot.py': clubjt_impl.batch.service.spot
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/rank.py': clubjt_impl.batch.service.rank
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/shop.py': clubjt_impl.batch.service.shop
-Error processing file '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/rank.py': (<Name.object l.0 at 0x10a3db390>, None, None, None)
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/raw_data.py': clubjt_impl.batch.service.raw_data
-Traceback (most recent call last):
-  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 244, in run
-    file_refs = future.result()
-                ^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 99, in find_references_in_file
-    inferred_defs = list(node.infer())
-                    ^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
-    for i, result in enumerate(self._infer(context=context, **kwargs)):
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
-    yield next(generator)
-          ^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
-    for res in _func(node, context, **kwargs):
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_classes.py", line 1108, in _infer_attribute
-    yield from owner.igetattr(node.attrname, context)
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2534, in igetattr
-    inferred._proxied.getattr("__get__", context)
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2419, in getattr
-    values += self._metaclass_lookup_attribute(name, context)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2443, in _metaclass_lookup_attribute
-    attrs.update(set(cls_attributes))
-                 ^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2450, in _get_attribute_from_metaclass
-    attrs = cls.getattr(name, context=context, class_context=True)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2419, in getattr
-    values += self._metaclass_lookup_attribute(name, context)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2439, in _metaclass_lookup_attribute
-    metaclass = self.metaclass(context=context)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2753, in metaclass
-    return self._find_metaclass(context=context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2737, in _find_metaclass
-    klass = parent._find_metaclass(seen)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2733, in _find_metaclass
-    klass = self.declared_metaclass(context=context)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2705, in declared_metaclass
-    for baseobj in base.infer(context=context):
-  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 160, in infer
-    yield from context.inferred[key]
-               ~~~~~~~~~~~~~~~~^^^^^
-KeyError: (<Name.object l.0 at 0x10a3db390>, None, None, None)
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/ent.py': clubjt_impl.batch.service.ent
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/account.py': clubjt_impl.batch.service.account
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/batch/service/holiday.py': clubjt_impl.batch.service.holiday
@@ -791,8 +861,73 @@ Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/store_and_use.py at line 295, column 56, class: StoreAndUseService, method/function: get_store_and_use
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/no_smoking_area.py': clubjt_impl.api.user.service.no_smoking_area
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/lottery.py': clubjt_impl.api.user.service.lottery
-Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/lottery.py at line 262, column 23, class: LotteryService, method/function: apply_lottery
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/favorite_spot.py': clubjt_impl.api.user.service.favorite_spot
+Error processing file '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/lottery.py': (<Subscript l.10 at 0x11fb07a90>, None, <astroid.context.CallContext object at 0x12a6cc640>, None)
+Traceback (most recent call last):
+  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 244, in run
+    file_refs = future.result()
+                ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/sugiyama/homebrew/Cellar/python@3.11/3.11.0/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/pyan3-fs/pyan3_fs/astroid_sample.py", line 99, in find_references_in_file
+    inferred_defs = list(node.infer())
+                    ^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_classes.py", line 1091, in _infer_attribute
+    for owner in node.expr.infer(context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/bases.py", line 177, in _infer_stmts
+    for inf in stmt.infer(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/bases.py", line 177, in _infer_stmts
+    for inf in stmt.infer(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 168, in infer
+    for i, result in enumerate(self._infer(context=context, **kwargs)):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 86, in inner
+    yield next(generator)
+          ^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/decorators.py", line 49, in wrapped
+    for res in _func(node, context, **kwargs):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_classes.py", line 1769, in _infer
+    yield from callee.infer_call_result(
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2140, in infer_call_result
+    metaclass = self.metaclass(context=context)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2753, in metaclass
+    return self._find_metaclass(context=context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2735, in _find_metaclass
+    for parent in self.ancestors(context=context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/scoped_nodes/scoped_nodes.py", line 2245, in ancestors
+    for baseobj in stmt.infer(context):
+  File "/Users/sugiyama/Library/Caches/pypoetry/virtualenvs/pyan3-fs-XpmoCZMV-py3.11/lib/python3.11/site-packages/astroid/nodes/node_ng.py", line 160, in infer
+    yield from context.inferred[key]
+               ~~~~~~~~~~~~~~~~^^^^^
+KeyError: (<Subscript l.10 at 0x11fb07a90>, None, <astroid.context.CallContext object at 0x12a6cc640>, None)
 Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/favorite_spot.py at line 33, column 14, class: SpotLocal, method/function: N/A
 Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/favorite_spot.py at line 41, column 15, class: SpotLocal, method/function: set_host_url
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/mfa.py': clubjt_impl.api.user.service.mfa
@@ -808,8 +943,8 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/gacha.py': clubjt_impl.api.user.service.gacha
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/gacha.py at line 115, column 23, class: GachaService, method/function: get_gacha_status
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/wallpaper.py': clubjt_impl.api.user.service.wallpaper
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_tobaccos_questionnaire_information.py': clubjt_impl.api.user.service.pxc_tobaccos_questionnaire_information
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/wallpaper.py at line 193, column 19, class: WallpaperService, method/function: _entity_to_model
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_tobaccos_questionnaire_information.py': clubjt_impl.api.user.service.pxc_tobaccos_questionnaire_information
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/user_post_spot_image.py': clubjt_impl.api.user.service.user_post_spot_image
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py': clubjt_impl.api.user.service.old_shop_user
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/dc.py': clubjt_impl.api.user.service.dc
@@ -824,49 +959,49 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/exchange_token.py': clubjt_impl.api.user.service.exchange_token
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py': clubjt_impl.api.user.service.login_user_status
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 156, column 24, class: LoginUserStatusService, method/function: get_login_user_status
+Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 258, column 24, class: OldShopUserService, method/function: find_on_sale_all_devices
 Reference found: cls.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 454, column 28, class: LoginUserStatusService, method/function: _find_login_user_point_status
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 476, column 49, class: LoginUserStatusService, method/function: _find_login_user_point_status
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 525, column 44, class: LoginUserStatusService, method/function: _find_login_user_campaign_status
+Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 727, column 32, class: OldShopUserService, method/function: find_target_user_device
+Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 804, column 20, class: OldShopUserService, method/function: _get_user_tobacco
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 658, column 24, class: LoginUserStatusService, method/function: get_login_user_status_for_pxc
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 867, column 20, class: LoginUserStatusService, method/function: _get_user_tobacco
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py': clubjt_impl.api.user.service.home
-Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 258, column 24, class: OldShopUserService, method/function: find_on_sale_all_devices
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 225, column 48, class: HomeService, method/function: find_home_area_contents
-Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 727, column 32, class: OldShopUserService, method/function: find_target_user_device
-Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 804, column 20, class: OldShopUserService, method/function: _get_user_tobacco
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 408, column 31, class: HomeService, method/function: find_home_content_card
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 449, column 44, class: HomeService, method/function: find_home_contents
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 500, column 48, class: HomeService, method/function: find_home_main_tobacco_contents
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/sub_tobacco.py': clubjt_impl.api.user.service.sub_tobacco
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 957, column 36, class: HomeService, method/function: _get_carousels
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1006, column 48, class: HomeService, method/function: find_home_personal_contents
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1019, column 48, class: HomeService, method/function: find_home_personal_contents
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1032, column 48, class: HomeService, method/function: find_home_personal_contents
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1045, column 48, class: HomeService, method/function: find_home_personal_contents
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_spot.py': clubjt_impl.api.user.service.pxc_spot
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1057, column 48, class: HomeService, method/function: find_home_personal_contents
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_day_achievements.py': clubjt_impl.api.user.service.pxc_day_achievements
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1264, column 40, class: HomeService, method/function: _build_campaign_landing_page
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1266, column 46, class: HomeService, method/function: _build_campaign_landing_page
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/sub_tobacco.py': clubjt_impl.api.user.service.sub_tobacco
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_spot.py': clubjt_impl.api.user.service.pxc_spot
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_day_achievements.py': clubjt_impl.api.user.service.pxc_day_achievements
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_tour.py': clubjt_impl.api.user.service.pxc_tour
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/map_user_post.py': clubjt_impl.api.user.service.map_user_post
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/target_user.py': clubjt_impl.api.user.service.target_user
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/area_spot.py': clubjt_impl.api.user.service.area_spot
-Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/area_spot.py at line 31, column 14, class: SpotListLocal, method/function: N/A
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/ippukugram.py': clubjt_impl.api.user.service.ippukugram
+Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/area_spot.py at line 31, column 14, class: SpotListLocal, method/function: N/A
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/my.py': clubjt_impl.api.user.service.my
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py': clubjt_impl.api.user.service.device
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/transfer_target_store.py': clubjt_impl.api.user.service.transfer_target_store
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/line_point.py': clubjt_impl.api.user.service.line_point
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 217, column 32, class: DeviceService, method/function: find_user_device
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/feedback.py': clubjt_impl.api.user.service.feedback
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 436, column 24, class: DeviceService, method/function: register_user_device
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/line_point.py': clubjt_impl.api.user.service.line_point
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 584, column 28, class: DeviceService, method/function: _register_user_pxc_device
 Reference found: cls.retry_on_optimistic_lock in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 682, column 12, class: DeviceService, method/function: _update_user_device
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/feedback.py': clubjt_impl.api.user.service.feedback
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/spot_report.py': clubjt_impl.api.user.service.spot_report
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/questionnaire.py': clubjt_impl.api.user.service.questionnaire
-Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/questionnaire.py at line 260, column 23, class: QuestionnaireService, method/function: answer_questionnaire
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/firebase_messaging.py': clubjt_impl.api.user.service.firebase_messaging
+Reference found: ServiceBase.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/questionnaire.py at line 260, column 23, class: QuestionnaireService, method/function: answer_questionnaire
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/insider.py': clubjt_impl.api.user.service.insider
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/main_tobacco.py': clubjt_impl.api.user.service.main_tobacco
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/partner_coupon.py': clubjt_impl.api.user.service.partner_coupon
@@ -885,10 +1020,10 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_info.py': clubjt_impl.api.user.service.login_user_info
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/dc_monitor.py': clubjt_impl.api.user.service.dc_monitor
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation.py': clubjt_impl.api.user.service.serial_accumulation
-Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation.py at line 84, column 24, class: SerialAccumulationService, method/function: save_pxc_serial_points
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/introducee.py': clubjt_impl.api.user.service.introducee
-Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation.py at line 143, column 24, class: SerialAccumulationService, method/function: save_serial_points
+Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation.py at line 84, column 24, class: SerialAccumulationService, method/function: save_pxc_serial_points
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/ec_content.py': clubjt_impl.api.user.service.ec_content
+Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation.py at line 143, column 24, class: SerialAccumulationService, method/function: save_serial_points
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/user_attribute.py': clubjt_impl.api.user.service.user_attribute
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/campaign_application.py': clubjt_impl.api.user.service.campaign_application
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/line_url.py': clubjt_impl.api.user.service.line_url
@@ -917,14 +1052,14 @@ Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/campaign.py at line 706, column 56, class: CampaignService, method/function: get_pxc_campaign_stock
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/article_rating.py': clubjt_impl.api.user.service.article_rating
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py': clubjt_impl.api.user.service.chat
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/no_action.py': clubjt_impl.api.user.service.no_action
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_app.py': clubjt_impl.api.user.service.shop_app
 Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 146, column 15, class: ChatService, method/function: N/A
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 414, column 40, class: ChatService, method/function: get_device_information
 Reference found: self.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 425, column 23, class: ChatService, method/function: get_device_information
 Reference found: cls.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 1580, column 23, class: ChatService, method/function: check_pxc_product_warranty_error
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 1785, column 32, class: ChatService, method/function: _parse_image_url
 Reference found: cls.get_user_total_points in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/chat.py at line 1854, column 31, class: ChatService, method/function: __check_pxc_used_point
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/no_action.py': clubjt_impl.api.user.service.no_action
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_app.py': clubjt_impl.api.user.service.shop_app
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/content.py': clubjt_impl.api.user.service.content
 Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/content.py at line 66, column 19, class: ContentLocal, method/function: N/A
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/content.py at line 366, column 59, class: ContentService, method/function: get_pickup_contents_and_campaigns
@@ -963,10 +1098,10 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/pxc_recommend_section.py at line 231, column 57, class: PxcRecommendSectionService, method/function: find_pxc_recommend_categories
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/crowdfunding.py': clubjt_impl.api.user.service.crowdfunding
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/user_coupon.py': clubjt_impl.api.user.service.user_coupon
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/support_content.py': clubjt_impl.api.user.service.support_content
 Reference found: ServiceBase.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/user_coupon.py at line 29, column 19, class: CouponLocal, method/function: N/A
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/camel.py': clubjt_impl.api.user.service.camel
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/support_content.py': clubjt_impl.api.user.service.support_content
 Reference found: cls.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/support_content.py at line 215, column 24, class: SupportContentService, method/function: _entity_to_model
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/camel.py': clubjt_impl.api.user.service.camel
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/check_in.py': clubjt_impl.api.user.service.check_in
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/brand.py': clubjt_impl.api.user.service.brand
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/brand.py at line 93, column 28, class: BrandService, method/function: find_brands
@@ -983,9 +1118,9 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/lottery.py': clubjt_impl.api.user.service.abstract.lottery
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/favorite_spot.py': clubjt_impl.api.user.service.abstract.favorite_spot
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/mfa.py': clubjt_impl.api.user.service.abstract.mfa
-Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/account.py at line 1494, column 17, class: AccountService, method/function: inquiry_password
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/introducer.py': clubjt_impl.api.user.service.abstract.introducer
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/advertisement_section.py': clubjt_impl.api.user.service.abstract.advertisement_section
+Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/account.py at line 1494, column 17, class: AccountService, method/function: inquiry_password
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/ssc_id.py': clubjt_impl.api.user.service.abstract.ssc_id
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/address.py': clubjt_impl.api.user.service.abstract.address
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/permission_setting.py': clubjt_impl.api.user.service.abstract.permission_setting
@@ -1083,7 +1218,6 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/password.py': clubjt_impl.api.user.service.abstract.password
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/spot.py': clubjt_impl.api.user.service.abstract.spot
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/point_history.py': clubjt_impl.api.user.service.abstract.point_history
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/pxc_recommend_section.py': clubjt_impl.api.user.service.abstract.pxc_recommend_section
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/crowdfunding.py': clubjt_impl.api.user.service.abstract.crowdfunding
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/user_coupon.py': clubjt_impl.api.user.service.abstract.user_coupon
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/abstract/support_content.py': clubjt_impl.api.user.service.abstract.support_content
@@ -1120,7 +1254,9 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation_task/pxc_beginner_campaign_task.py': clubjt_impl.api.user.service.serial_accumulation_task.pxc_beginner_campaign_task
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation_task/abstract_serial_accumulation_task.py': clubjt_impl.api.user.service.serial_accumulation_task.abstract_serial_accumulation_task
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/serial_accumulation_task/questionnaire_task_80020.py': clubjt_impl.api.user.service.serial_accumulation_task.questionnaire_task_80020
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_repository/campaign_repository.py': clubjt_impl.api.user.service.shop_repository.campaign_repository
+¿ëÇÔ  9   Âè£Á∏¿ëÇÔ         0}	       [
+                        „Ç≥„0}	      „ÅÇ„Çä„Åå„Å®            j  Ç",
+¯¿ëÇÔ  9       ÿ¿ëÇÔ  h      ¯¿ëÇÔ  9   ÇØ„ÇX¡ëÇÔ  U  æº„Ç¯Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_repository/campaign_repository.py': clubjt_impl.api.user.service.shop_repository.campaign_repository
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_repository/trial_transaction_repository.py': clubjt_impl.api.user.service.shop_repository.trial_transaction_repository
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_repository/transaction_repository.py': clubjt_impl.api.user.service.shop_repository.transaction_repository
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/shop_repository/mail_permission_repository.py': clubjt_impl.api.user.service.shop_repository.mail_permission_repository
@@ -1211,8 +1347,8 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/content.py': clubjt_impl.api.operator.service.content
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/plan_application.py': clubjt_impl.api.operator.service.plan_application
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/serial.py': clubjt_impl.api.operator.service.serial
-Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/plan_application.py at line 365, column 25, class: PlanApplicationService, method/function: create_plan_application_from_file
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/subscription_contract.py': clubjt_impl.api.operator.service.subscription_contract
+Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/plan_application.py at line 365, column 25, class: PlanApplicationService, method/function: create_plan_application_from_file
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/cjto.py': clubjt_impl.api.operator.service.cjto
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/user_favorite_spot.py': clubjt_impl.api.operator.service.user_favorite_spot
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/release_note.py': clubjt_impl.api.operator.service.release_note
@@ -1228,8 +1364,8 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/tobacco_stock.py': clubjt_impl.api.operator.service.tobacco_stock
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/clubjtgram.py': clubjt_impl.api.operator.service.clubjtgram
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/monitor_flyer.py': clubjt_impl.api.operator.service.monitor_flyer
-Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/clubjtgram.py at line 336, column 33, class: ClubjtgramService, method/function: create_clubjtgram
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/rectangle_a.py': clubjt_impl.api.operator.service.rectangle_a
+Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/clubjtgram.py at line 336, column 33, class: ClubjtgramService, method/function: create_clubjtgram
 Reference found: self.get_host_url in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/clubjtgram.py at line 470, column 33, class: ClubjtgramService, method/function: update_clubjtgram
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/cats.py': clubjt_impl.api.operator.service.cats
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/dc_monitor_flyer.py': clubjt_impl.api.operator.service.dc_monitor_flyer
@@ -1258,8 +1394,8 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/account.py': clubjt_impl.api.operator.service.account
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/optional_coupon_type.py': clubjt_impl.api.operator.service.optional_coupon_type
 Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/account.py at line 126, column 21, class: AccountService, method/function: create_account_from_file
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/holiday.py': clubjt_impl.api.operator.service.holiday
 Reference found: self.new_session in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/account.py at line 196, column 21, class: AccountService, method/function: create_account_from_file
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/holiday.py': clubjt_impl.api.operator.service.holiday
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/mail_magazine_history.py': clubjt_impl.api.operator.service.mail_magazine_history
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/spot_post_summary.py': clubjt_impl.api.operator.service.spot_post_summary
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/grant_point.py': clubjt_impl.api.operator.service.grant_point
@@ -1309,6 +1445,7 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/trial_monitor.py': clubjt_impl.api.operator.service.abstract.trial_monitor
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/before_login_content.py': clubjt_impl.api.operator.service.abstract.before_login_content
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/all_permission_setting.py': clubjt_impl.api.operator.service.abstract.all_permission_setting
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/operator.py': clubjt_impl.api.operator.service.abstract.operator
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/inspection_notice.py': clubjt_impl.api.operator.service.abstract.inspection_notice
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/__init__.py': clubjt_impl.api.operator.service.abstract.__init__
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/external_character.py': clubjt_impl.api.operator.service.abstract.external_character
@@ -1348,10 +1485,10 @@ Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/monitor_flyer.py': clubjt_impl.api.operator.service.abstract.monitor_flyer
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/rectangle_a.py': clubjt_impl.api.operator.service.abstract.rectangle_a
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/cats.py': clubjt_impl.api.operator.service.abstract.cats
-Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/line_carousel.py': clubjt_impl.api.operator.service.abstract.line_carousel
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/dc_monitor_flyer.py': clubjt_impl.api.operator.service.abstract.dc_monitor_flyer
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/home_carousel_asset.py': clubjt_impl.api.operator.service.abstract.home_carousel_asset
-ó             3               ì              3   ∆  ËXùE∆  í             3   ∆  YùE∆  b              3       (YùE∆  c  +           3      HYùE∆  d            Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/device_serial.py': clubjt_impl.api.operator.service.abstract.device_serial
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/device_serial.py': clubjt_impl.api.operator.service.abstract.device_serial
+Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/spot.py': clubjt_impl.api.operator.service.abstract.spot
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/content_card.py': clubjt_impl.api.operator.service.abstract.content_card
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/stock_actual.py': clubjt_impl.api.operator.service.abstract.stock_actual
 Derived module name for '/Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/abstract/point_history.py': clubjt_impl.api.operator.service.abstract.point_history
@@ -1393,20 +1530,16 @@ References to definitions in 'clubjt_impl/api/user/service/address.py' found:
  - ServiceBase.get_user_total_points is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/util/plan_util_task/core_task.py at line 99, column 31, in class CoreTask, method/function check_qualifications
  - AddressService().find_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 985, column 11, in class N/A, method/function find_address
  - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 985, column 11, in class N/A, method/function find_address
- - AddressService().register_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 999, column 11, in class N/A, method/function register_address
+       ØÛ-                                   èÛ-               j     PùyÇÔ  $      êõyÇÔ  h     PùyÇÔ  $      ∞ùyÇÔ  U     PùyÇÔ  $      –ùyÇÔ  @ªÛ-   - AddressService().register_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 999, column 11, in class N/A, method/function register_address
  - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 999, column 11, in class N/A, method/function register_address
  - AddressService().update_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 1014, column 11, in class N/A, method/function update_address
-g _ l e v e l ) 
-                 s e l f . l o g _ m e s s a g e   =   k w a r g s 
- 
-         d e f   a d d i t i o n a l _ l o g _ m e s s a g e ( s e l f )   - >  - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 1014, column 11, in class N/A, method/function update_address
+ - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 1014, column 11, in class N/A, method/function update_address
  - AddressService().find_cleansing_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 1738, column 11, in class N/A, method/function find_cleansing_address
  - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 1738, column 11, in class N/A, method/function find_cleansing_address
  - AddressService().check_name_and_address is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 4087, column 11, in class N/A, method/function check_name_and_address
  - AddressService is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user_handler.py at line 4087, column 11, in class N/A, method/function check_name_and_address
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/store_and_use.py at line 293, column 50, in class StoreAndUseService, method/function get_store_and_use
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/store_and_use.py at line 295, column 56, in class StoreAndUseService, method/function get_store_and_use
- - self.get_user_total_points is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/lottery.py at line 262, column 23, in class LotteryService, method/function apply_lottery
  - ServiceBase.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/favorite_spot.py at line 33, column 14, in class SpotLocal, method/function N/A
  - ServiceBase.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/favorite_spot.py at line 41, column 15, in class SpotLocal, method/function set_host_url
  - self.get_user_total_points is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/gacha.py at line 115, column 23, in class GachaService, method/function get_gacha_status
@@ -1419,6 +1552,9 @@ g _ l e v e l ) 
  - cls.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 525, column 44, in class LoginUserStatusService, method/function _find_login_user_campaign_status
  - self.get_user_total_points is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 658, column 24, in class LoginUserStatusService, method/function get_login_user_status_for_pxc
  - cls.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/login_user_status.py at line 867, column 20, in class LoginUserStatusService, method/function _get_user_tobacco
+ - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 258, column 24, in class OldShopUserService, method/function find_on_sale_all_devices
+ - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 727, column 32, in class OldShopUserService, method/function find_target_user_device
+ - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 804, column 20, in class OldShopUserService, method/function _get_user_tobacco
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 225, column 48, in class HomeService, method/function find_home_area_contents
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 408, column 31, in class HomeService, method/function find_home_content_card
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 449, column 44, in class HomeService, method/function find_home_contents
@@ -1431,9 +1567,6 @@ g _ l e v e l ) 
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1057, column 48, in class HomeService, method/function find_home_personal_contents
  - cls.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1264, column 40, in class HomeService, method/function _build_campaign_landing_page
  - cls.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/home.py at line 1266, column 46, in class HomeService, method/function _build_campaign_landing_page
- - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 258, column 24, in class OldShopUserService, method/function find_on_sale_all_devices
- - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 727, column 32, in class OldShopUserService, method/function find_target_user_device
- - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/old_shop_user.py at line 804, column 20, in class OldShopUserService, method/function _get_user_tobacco
  - ServiceBase.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/area_spot.py at line 31, column 14, in class SpotListLocal, method/function N/A
  - self.get_host_url is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 217, column 32, in class DeviceService, method/function find_user_device
  - self.get_user_total_points is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/user/service/device.py at line 436, column 24, in class DeviceService, method/function register_user_device
@@ -1495,4 +1628,4 @@ g _ l e v e l ) 
  - self.new_session is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/account.py at line 126, column 21, in class AccountService, method/function create_account_from_file
  - self.new_session is referenced in /Users/sugiyama/clubjt-server/clubjt-impl/clubjt_impl/api/operator/service/account.py at line 196, column 21, in class AccountService, method/function create_account_from_file
 
-Analysis complete. Total files: 1146, Files with StopIteration: 2847
+Analysis complete. Total files: 1146, Files with StopIteration: 3701
