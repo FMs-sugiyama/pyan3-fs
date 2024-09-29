@@ -237,38 +237,61 @@ class CallGraphAnalyzer:
             "reference_class_name",
             "reference_function_name",
         ]
+        written_rows = set()  # 重複を防ぐためのセット
+
         with open(self.CSV_FILE, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
-            for reference in self.references:
-                row = {
-                    "source_file_path": reference["source_file_path"],
-                    "source_class_name": reference["source_class_name"],
-                    "source_function_name": reference["source_function_name"],
-                    "reference_file_path": reference["reference_file_path"],
-                    "reference_class_name": reference["reference_class_name"] or "",
-                    "reference_function_name": reference["reference_function_name"]
-                    or "",
-                }
-                writer.writerow(row)
 
-            # 定義のみで参照がないものも出力
+            # 参照があるものを出力
+            for reference in self.references:
+                row = (
+                    reference["source_file_path"],
+                    reference["source_class_name"],
+                    reference["source_function_name"],
+                    reference["reference_file_path"],
+                    reference["reference_class_name"] or "",
+                    reference["reference_function_name"] or "",
+                )
+                if row not in written_rows:
+                    writer.writerow(
+                        {
+                            "source_file_path": reference["source_file_path"],
+                            "source_class_name": reference["source_class_name"],
+                            "source_function_name": reference["source_function_name"],
+                            "reference_file_path": reference["reference_file_path"],
+                            "reference_class_name": reference["reference_class_name"]
+                            or "",
+                            "reference_function_name": reference[
+                                "reference_function_name"
+                            ]
+                            or "",
+                        }
+                    )
+                    written_rows.add(row)
+
+            # 参照がない定義を出力
             for defn in self.definitions:
-                if not any(
-                    ref["source_file_path"] == defn["file_path"]
-                    and ref["source_class_name"] == defn["class_name"]
-                    and ref["source_function_name"] == defn["function_name"]
-                    for ref in self.references
-                ):
-                    row = {
-                        "source_file_path": defn["file_path"],
-                        "source_class_name": defn["class_name"] or "",
-                        "source_function_name": defn["function_name"] or "",
-                        "reference_file_path": "",
-                        "reference_class_name": "",
-                        "reference_function_name": "",
-                    }
-                    writer.writerow(row)
+                row = (
+                    defn["file_path"],
+                    defn["class_name"] or "",
+                    defn["function_name"] or "",
+                    "",
+                    "",
+                    "",
+                )
+                if row not in written_rows:
+                    writer.writerow(
+                        {
+                            "source_file_path": defn["file_path"],
+                            "source_class_name": defn["class_name"] or "",
+                            "source_function_name": defn["function_name"] or "",
+                            "reference_file_path": "",
+                            "reference_class_name": "",
+                            "reference_function_name": "",
+                        }
+                    )
+                    written_rows.add(row)
 
 
 if __name__ == "__main__":
