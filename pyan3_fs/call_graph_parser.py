@@ -243,7 +243,7 @@ class CallGraphAnalyzer:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
 
-            # 参照があるものを出力
+            # 参照があるもののみを出力
             for reference in self.references:
                 row = (
                     reference["source_file_path"],
@@ -266,29 +266,6 @@ class CallGraphAnalyzer:
                                 "reference_function_name"
                             ]
                             or "",
-                        }
-                    )
-                    written_rows.add(row)
-
-            # 参照がない定義を出力
-            for defn in self.definitions:
-                row = (
-                    defn["file_path"],
-                    defn["class_name"] or "",
-                    defn["function_name"] or "",
-                    "",
-                    "",
-                    "",
-                )
-                if row not in written_rows:
-                    writer.writerow(
-                        {
-                            "source_file_path": defn["file_path"],
-                            "source_class_name": defn["class_name"] or "",
-                            "source_function_name": defn["function_name"] or "",
-                            "reference_file_path": "",
-                            "reference_class_name": "",
-                            "reference_function_name": "",
                         }
                     )
                     written_rows.add(row)
