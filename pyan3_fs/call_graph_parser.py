@@ -11,20 +11,18 @@ from astroid.exceptions import AstroidError, InferenceError
 class CallGraphAnalyzer:
     PROJECT_PATH = "/Users/sugiyama/clubjt-server/clubjt-impl"
     TARGET_MODULE = "clubjt_impl"
-    HANDLER_MODULE = "clubjt_impl/api/user/service/address.py"
     CSV_FILE = "clubjt_reference_result.csv"
 
     def __init__(self):
         self.project_path = os.path.abspath(self.PROJECT_PATH)
         self.target_module = self.TARGET_MODULE
-        self.handler_module = self.HANDLER_MODULE
-        self.handler_module_path = os.path.join(self.project_path, self.handler_module)
         self.target_path = os.path.join(self.project_path, self.target_module)
         self.module_cache = {}
         self.definitions = []
         self.references = []
         self.definition_qnames = set()
         self.builder = astroid.builder.AstroidBuilder()
+        self.python_files = []
 
         # ログの設定
         logging.basicConfig(
@@ -39,18 +37,13 @@ class CallGraphAnalyzer:
 
     def execute(self):
         try:
-            # ハンドラーモジュールから定義を抽出
-            module_name = self.get_module_qname(self.handler_module_path)
-            if not module_name:
-                self.logger.error("モジュール名を取得できませんでした。")
-                return
+            # 解析対象のPythonファイルを取得（TARGET_MODULE 配下）
+            self.python_files = self.get_python_files(self.target_path)
+            self.logger.info(f"{len(self.python_files)} 個のPythonファイルから定義を抽出します。")
 
-            module = self.parse_module(self.handler_module_path, module_name)
-            if not module:
-                self.logger.error("モジュールの解析に失敗しました。")
-                return
-
-            self.extract_definitions(module)
+            # 定義を抽出
+            for file_path in self.python_files:
+                self.extract_definitions(file_path)
 
             if not self.definitions:
                 self.logger.error("定義が見つかりませんでした。")
@@ -59,12 +52,12 @@ class CallGraphAnalyzer:
             self.definition_qnames = set(defn["qname"] for defn in self.definitions)
             self.logger.info(f"定義を {len(self.definition_qnames)} 件収集しました。")
 
-            # 解析対象のPythonファイルを取得（プロジェクト全体）
-            python_files = self.get_python_files()
-            self.logger.info(f"{len(python_files)} 個のPythonファイルを解析します。")
+            # 参照の探索範囲を PROJECT_PATH 配下のすべての Python ファイルとする
+            all_python_files = self.get_python_files(self.project_path)
+            self.logger.info(f"{len(all_python_files)} 個のPythonファイルを解析します。")
 
             # 各ファイルで参照を探索
-            for file_path in python_files:
+            for file_path in all_python_files:
                 self.find_references_in_file(file_path)
 
             # 結果をCSVに書き込み
@@ -75,9 +68,9 @@ class CallGraphAnalyzer:
             self.logger.error(f"解析中にエラーが発生しました: {e}")
             traceback.print_exc()
 
-    def get_python_files(self):
+    def get_python_files(self, path):
         python_files = []
-        for root, dirs, files in os.walk(self.target_path):
+        for root, dirs, files in os.walk(path):
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
@@ -87,7 +80,8 @@ class CallGraphAnalyzer:
 
     def get_module_qname(self, file_path):
         try:
-            relative_path = Path(file_path).relative_to(self.project_path)
+            absolute_path = os.path.join(self.project_path, file_path)
+            relative_path = Path(absolute_path).relative_to(self.project_path)
         except ValueError:
             self.logger.error(
                 f"ファイル '{file_path}' はプロジェクトパス '{self.project_path}' の下にありません。"
@@ -99,25 +93,34 @@ class CallGraphAnalyzer:
         return module_name
 
     def parse_module(self, file_path, module_name):
+        absolute_file_path = os.path.join(self.project_path, file_path)
         try:
             if file_path in self.module_cache:
                 module = self.module_cache[file_path]
             else:
-                module = self.builder.file_build(file_path, module_name)
+                module = self.builder.file_build(absolute_file_path, module_name)
                 self.module_cache[file_path] = module
             return module
         except (AstroidError, FileNotFoundError, StopIteration) as e:
             self.logger.error(f"モジュール '{file_path}' の解析中にエラーが発生しました: {e}")
             return None
 
-    def extract_definitions(self, module):
+    def extract_definitions(self, file_path):
+        module_name = self.get_module_qname(file_path)
+        if not module_name:
+            return
+
+        module = self.parse_module(file_path, module_name)
+        if not module:
+            return
+
         for node in module.body:
             if isinstance(node, astroid.ClassDef):
-                self._extract_class_definitions(node)
+                self._extract_class_definitions(node, file_path)
             elif isinstance(node, astroid.FunctionDef):
                 qname = node.qname()
                 func_def = {
-                    "file_path": self.handler_module,
+                    "file_path": file_path,
                     "class_name": None,
                     "function_name": node.name,
                     "qname": qname,
@@ -125,10 +128,10 @@ class CallGraphAnalyzer:
                 }
                 self.definitions.append(func_def)
 
-    def _extract_class_definitions(self, class_node):
+    def _extract_class_definitions(self, class_node, file_path):
         qname = class_node.qname()
         class_def = {
-            "file_path": self.handler_module,
+            "file_path": file_path,
             "class_name": class_node.name,
             "function_name": None,
             "qname": qname,
@@ -140,7 +143,7 @@ class CallGraphAnalyzer:
         for method in class_node.mymethods():
             qname = method.qname()
             method_def = {
-                "file_path": self.handler_module,
+                "file_path": file_path,
                 "class_name": class_node.name,
                 "function_name": method.name,
                 "qname": qname,
@@ -152,15 +155,14 @@ class CallGraphAnalyzer:
         for subclass in class_node.locals.values():
             for subnode in subclass:
                 if isinstance(subnode, astroid.ClassDef):
-                    self._extract_class_definitions(subnode)
+                    self._extract_class_definitions(subnode, file_path)
 
     def find_references_in_file(self, file_path):
-        absolute_file_path = os.path.join(self.project_path, file_path)
-        module_name = self.get_module_qname(absolute_file_path)
+        module_name = self.get_module_qname(file_path)
         if not module_name:
             return
 
-        module = self.parse_module(absolute_file_path, module_name)
+        module = self.parse_module(file_path, module_name)
         if not module:
             return
 
