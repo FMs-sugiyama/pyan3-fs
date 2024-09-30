@@ -1,0 +1,3 @@
+clubjt_impl/api/operator_handler.py, None, update_user_rank
+  clubjt_impl/api/operator/service/user.py, UserService, update_user_rank
+    clubjt_impl/util/user_util.py, UserUtil, judge_next_rank_change

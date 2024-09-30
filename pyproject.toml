@@ -12,6 +12,7 @@ pycg = "^0.0.8"
 rope = "^1.13.0"
 jedi = "^0.19.1"
 astroid = "^3.3.4"
+duckdb = "^1.1.1"
 
 [build-system]
 requires = ["poetry-core"]
