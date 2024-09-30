@@ -52,8 +52,8 @@ class CallGraphAnalyzer:
             self.definition_qnames = set(defn["qname"] for defn in self.definitions)
             self.logger.info(f"定義を {len(self.definition_qnames)} 件収集しました。")
 
-            # 参照の探索範囲を PROJECT_PATH 配下のすべての Python ファイルとする
-            all_python_files = self.get_python_files(self.project_path)
+            # 参照の探索範囲を TARGET_MODULE 配下の Python ファイルとする
+            all_python_files = self.get_python_files(self.target_path)
             self.logger.info(f"{len(all_python_files)} 個のPythonファイルを解析します。")
 
             # 各ファイルで参照を探索
@@ -71,6 +71,9 @@ class CallGraphAnalyzer:
     def get_python_files(self, path):
         python_files = []
         for root, dirs, files in os.walk(path):
+            # 特定のディレクトリを除外したい場合は、ここで除外できます
+            dirs[:] = [d for d in dirs if d != "tests"]  # 'tests' ディレクトリを除外
+
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
@@ -116,7 +119,7 @@ class CallGraphAnalyzer:
 
         for node in module.body:
             if isinstance(node, astroid.ClassDef):
-                self._extract_class_definitions(node, file_path)
+                self._extract_class_definitions(node, file_path, set())
             elif isinstance(node, astroid.FunctionDef):
                 qname = node.qname()
                 func_def = {
@@ -128,7 +131,11 @@ class CallGraphAnalyzer:
                 }
                 self.definitions.append(func_def)
 
-    def _extract_class_definitions(self, class_node, file_path):
+    def _extract_class_definitions(self, class_node, file_path, processed_classes):
+        if class_node.qname() in processed_classes:
+            return
+        processed_classes.add(class_node.qname())
+
         qname = class_node.qname()
         class_def = {
             "file_path": file_path,
@@ -139,7 +146,7 @@ class CallGraphAnalyzer:
         }
         self.definitions.append(class_def)
 
-        # 明示的に定義されたメソッドのみを取得
+        # 明示的に定義されたメソッドを取得
         for method in class_node.mymethods():
             qname = method.qname()
             method_def = {
@@ -151,11 +158,32 @@ class CallGraphAnalyzer:
             }
             self.definitions.append(method_def)
 
+        # 継承元クラスを処理
+        for base in class_node.bases:
+            try:
+                inferred_bases = base.infer()
+                for inferred_base in inferred_bases:
+                    if isinstance(inferred_base, astroid.ClassDef):
+                        # 継承元クラスが TARGET_MODULE 内にあるか確認
+                        base_module = inferred_base.root()
+                        base_module_qname = base_module.name
+                        if base_module_qname.startswith(self.target_module):
+                            base_file_path = os.path.relpath(
+                                base_module.file, self.project_path
+                            )
+                            self._extract_class_definitions(
+                                inferred_base, base_file_path, processed_classes
+                            )
+            except (InferenceError, AttributeError):
+                continue
+
         # 再帰的に内部クラスを処理
         for subclass in class_node.locals.values():
             for subnode in subclass:
                 if isinstance(subnode, astroid.ClassDef):
-                    self._extract_class_definitions(subnode, file_path)
+                    self._extract_class_definitions(
+                        subnode, file_path, processed_classes
+                    )
 
     def find_references_in_file(self, file_path):
         module_name = self.get_module_qname(file_path)
