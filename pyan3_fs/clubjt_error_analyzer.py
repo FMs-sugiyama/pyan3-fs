@@ -81,10 +81,10 @@ class ClubjtErrorAnalyzer:
             class_name = self.get_class_name(node)
             function_name = self.get_function_name(node)
             error_class_name = self.get_error_class_name(node.exc)
-            status_code, reason, message = self.get_error_args(node.exc)
+            status_code, detail_code, reason, message = self.get_error_args(node.exc)
             relative_path = os.path.relpath(file_path, self.project_path)
 
-            return {
+            result = {
                 "file_path": relative_path,
                 "class_name": class_name,
                 "function_name": function_name,
@@ -93,6 +93,11 @@ class ClubjtErrorAnalyzer:
                 "reason": reason,
                 "message": message or self.COMMON_ERROR_MESSAGE,
             }
+
+            if error_class_name == "ClubjtModuleError":
+                result["detail_code"] = detail_code
+
+            return result
         except Exception as e:
             logging.error(f"Error extracting error info: {str(e)}")
             return {}
@@ -126,8 +131,9 @@ class ClubjtErrorAnalyzer:
     @classmethod
     def get_error_args(
         cls, exc_node: astroid.Call
-    ) -> tuple[str | None, str | None, str | None]:
+    ) -> tuple[str | None, str | None, str | None, str | None]:
         status_code = None
+        detail_code = None
         reason = None
         message = None
 
@@ -145,9 +151,15 @@ class ClubjtErrorAnalyzer:
             value = extract_value(arg)
             if idx == 0:
                 status_code = value
-            elif idx == 1:
+            elif idx == 1 and cls.get_error_class_name(exc_node) == "ClubjtModuleError":
+                detail_code = value
+            elif idx == 1 and cls.get_error_class_name(exc_node) != "ClubjtModuleError":
                 reason = value
-            elif idx == 2:
+            elif idx == 2 and cls.get_error_class_name(exc_node) == "ClubjtModuleError":
+                reason = value
+            elif idx == 2 and cls.get_error_class_name(exc_node) != "ClubjtModuleError":
+                message = value
+            elif idx == 3 and cls.get_error_class_name(exc_node) == "ClubjtModuleError":
                 message = value
 
         # Process keyword arguments
@@ -155,12 +167,14 @@ class ClubjtErrorAnalyzer:
             value = extract_value(keyword.value)
             if keyword.arg == "status_code":
                 status_code = value
+            elif keyword.arg == "detail_code":
+                detail_code = value
             elif keyword.arg == "reason":
                 reason = value
             elif keyword.arg == "message":
                 message = value
 
-        return status_code, reason, message
+        return status_code, detail_code, reason, message
 
     @classmethod
     def process_fstring(cls, node: astroid.JoinedStr) -> str:
@@ -187,20 +201,24 @@ class ClubjtErrorAnalyzer:
 
     def write_results_to_csv(self, results: Sequence[dict]) -> None:
         try:
+            fieldnames = [
+                "file_path",
+                "class_name",
+                "function_name",
+                "error_class_name",
+                "status_code",
+                "detail_code",
+                "reason",
+                "message",
+            ]
             with open(self.OUTPUT_FILE, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = [
-                    "file_path",
-                    "class_name",
-                    "function_name",
-                    "error_class_name",
-                    "status_code",
-                    "reason",
-                    "message",
-                ]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
                 writer.writeheader()
                 for result in results:
+                    if "detail_code" not in result:
+                        result[
+                            "detail_code"
+                        ] = ""  # Add empty string for non-ClubjtModuleError
                     writer.writerow(result)
         except Exception as e:
             logging.error(f"Error writing results to CSV: {str(e)}")
